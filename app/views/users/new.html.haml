@@ -1,6 +1,10 @@
-= form_for(@user, url: user_registration_path, html: {class: 'form-stacked'}) do |f|
+= form_for(@user, html: {class: 'form-stacked'}) do |f|
   %fieldset
     %legend Sign up
+    .clearfix
+      = f.label :username
+      .input
+        = f.text_field :username, placeholder: 'Username'
     .clearfix
       = f.label :email
       .input
@@ -13,5 +17,4 @@
       = f.label :password_confirmation
       .input
         = f.password_field :password_confirmation, placeholder: 'Password Confirmation'
-    = f.submit 'Sign up', :class => 'btn btn-primary'
-  = render partial: 'users/links'
+    = f.submit 'Sign up', class: 'btn btn-primary'

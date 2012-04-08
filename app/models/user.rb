@@ -1,25 +1,40 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
 
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+  USERNAME_PATTERN = /\A[[:graph:]]+\Z/ # Can only contain visible characters
+  EMAIL_PATTERN = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
-  # Devise fields
-  field :email,                  type: String,  default: '', null: false
-  field :encrypted_password,     type: String,  default: '', null: false
-  field :reset_password_token,   type: String
-  field :reset_password_sent_at, type: Time
-  field :remember_created_at,    type: Time
-  field :sign_in_count,          type: Integer, default: 0
-  field :current_sign_in_at,     type: Time
-  field :last_sign_in_at,        type: Time
-  field :current_sign_in_ip,     type: String
-  field :last_sign_in_ip,        type: String
-  field :confirmation_token,     type: String
-  field :confirmed_at,           type: Time
-  field :confirmation_sent_at,   type: Time
-  field :unconfirmed_email,      type: String
+  authenticates_with_sorcery!
+
+  validates :username, presence: true,
+                       uniqueness: {case_sensitive: false},
+                       format: {with: USERNAME_PATTERN}
+
+  validates :email, presence: true,
+                    uniqueness: {case_sensitive: false},
+                    format: {with: EMAIL_PATTERN}
+
+  validates :password, presence: true,
+                       confirmation: true,
+                       if: :password_validation_required?
+
+
+  slug :username
+
 
   has_many :albums
+
+  def remember_me
+    remember_me_token.present?
+  end
+
+
+  protected
+  def password_validation_required?
+    # Password validation is required if this is a new record or
+    # this is an existing user and either of the password fields are not blank.
+    !persisted? || persisted? && (!password.blank? || !password_confirmation.blank?)
+  end
 end

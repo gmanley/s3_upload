@@ -20,7 +20,7 @@ gem 'mongoid_slug'
 gem 'mongoid-tree'
 gem 'kaminari'
 
-gem 'devise'
+gem 'sorcery'
 gem 'cancan'
 
 gem 'responders'

@@ -1,21 +1,21 @@
 .navbar
   .navbar-inner
     .container-fluid
-      %a.brand{href: '/'} SoshiGal
-      - if user_signed_in?
+      %a.brand{href: '/'} S3 Upload
+      - if logged_in?
         %ul.nav.pull-right
           %li.dropdown
             %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
-              =current_user.email
+              = current_user.email
               %b.caret
             %ul.dropdown-menu
-              %li= link_to 'My Profile', edit_user_registration_path
+              %li= link_to 'My Profile', edit_user_path(current_user)
               %li.divider
-              %li= link_to 'Logout', destroy_user_session_path, method: 'delete'
-      - elsif !controller_path.start_with?('devise')
-        = form_for('user', url: user_session_path, html: {class: 'pull-right navbar-form', id: 'login'}) do |f|
-          = f.email_field :email, placeholder: 'Email', class: 'input-small'
+              %li= link_to 'Logout', :logout
+      - else
+        = form_for('user', url: user_sessions_path, html: {class: 'pull-right navbar-form', id: 'login'}) do |f|
+          = f.text_field :username, placeholder: 'Username', class: 'input-small'
           = f.password_field :password, placeholder: 'Password', class: 'input-small'
           = f.hidden_field :remember_me, value: 1
           %button.btn.btn-primary{type: 'submit'} Sign in
-          %a#register-link.btn{href: new_user_registration_path} Sign up
+          %a#register-link.btn{href: new_user_path} Sign up

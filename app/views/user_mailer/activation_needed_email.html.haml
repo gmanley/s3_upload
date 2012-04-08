@@ -1,0 +1,3 @@
+%p Welcome #{@user.username}!
+%p Please activate your account through the link below:
+%p= link_to 'Confirm my account', activate_user_url(@user.activation_token)

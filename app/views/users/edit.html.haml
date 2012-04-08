@@ -1,6 +1,10 @@
-= form_for(@user, url: user_registration_path, method: :put, html: {class: 'form-stacked'}) do |f|
+= form_for(@user, html: {class: 'form-stacked'}) do |f|
   %fieldset
     %legend Edit user
+    .clearfix
+      = f.label :username
+      .input
+        = f.text_field :username
     .clearfix
       = f.label :email
       .input
@@ -14,10 +18,5 @@
       = f.label :password_confirmation
       .input
         = f.password_field :password_confirmation
-    .clearfix
-      = f.label :current_password
-      .input
-        = f.password_field :current_password
-        %span.help-inline (we need your current password to confirm your changes)
     = f.submit 'Update', class: 'btn btn-primary'
 = link_to 'Back', :back
