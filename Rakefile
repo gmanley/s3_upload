@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Soshigal::Application.load_tasks
+S3Upload::Application.load_tasks

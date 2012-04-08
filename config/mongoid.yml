@@ -4,15 +4,15 @@ shared: &shared_settings
 development:
   <<: *shared_settings
   host: localhost
-  database: soshigal_development
+  database: s3_upload_development
 
 test:
   <<: *shared_settings
   host: localhost
-  database: soshigal_test
+  database: s3_upload_test
 
 # set these environment variables on your prod server
 production:
   <<: *shared_settings
   host: localhost
-  database: soshigal_production
+  database: s3_upload_production

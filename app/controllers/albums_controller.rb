@@ -1,6 +1,13 @@
 class AlbumsController < ApplicationController
   respond_to :html, :json, :js
 
+  def index
+    @albums = Album.all
+    authorize!(:index, Album)
+
+    respond_with(@albums)
+  end
+
   def show
     @album = Album.find_by_slug(params[:id])
     @images = @album.images.page(params[:page]).per(100)
@@ -10,7 +17,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @album = Album.new(params[:album])
+    @album = current_user.albums.new(params[:album])
     authorize!(:new, @album)
 
     respond_with(@album)
@@ -24,7 +31,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(params[:album])
+    @album = current_user.albums.new(params[:album])
     authorize!(:create, @album)
 
     @album.save

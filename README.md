@@ -1,7 +1,7 @@
-Soshigal
+S3Upload
 ========
 
-Soshigal is a photo gallery built with Rails.
+S3Upload is a photo gallery built with Rails.
 
 Features
 -------

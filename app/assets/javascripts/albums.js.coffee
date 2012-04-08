@@ -7,7 +7,7 @@ $ ->
       dataType: 'json'
     submitdata: (value, settings) ->
       authenticity_token: authenticity_token
-      _soshigal_session: session_token
+      _s3_upload_session: session_token
       album:
         title: value
 

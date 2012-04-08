@@ -4,10 +4,7 @@
     = link_to('Edit', edit_album_path(@album)) + " | " if can? :edit, Album
     = link_to('Destroy', album_path(@album), confirm: 'Are you sure?', method: :delete) if can? :destroy, Album
 
-- breadcrumbs(breadcrumb_paths)
-
 - if can? :create, Image
-  %p Add Images:
   = render 'images/form'
 %ul.thumbnails{data: {toggle: 'modal-gallery', target: '#modal-gallery'}}
   = render partial: 'images/image', collection: @images

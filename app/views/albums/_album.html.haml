@@ -1,0 +1,4 @@
+%li
+  %a.thumbnail{href: url_for(album)}
+    %img{src: album.thumbnail_url}
+    %h4.thumbnail-title=truncate(album.title, length: 50)

@@ -1,4 +1,4 @@
-Fabricator(:container, aliases: [:album, :category]) do
+Fabricator(:album) do
   title { Faker::Lorem.words.collect {|w| w.titlecase}.join(' ') }
   description { Faker::Lorem.sentence }
 end
@@ -13,8 +13,4 @@ Fabricator(:confirmed_user, from: :user) do
   confirmed_user true
   confirmed_at { Time.now }
   confirmation_token nil
-end
-
-Fabricator(:admin, from: :confirmed_user) do
-  admin true
 end

@@ -1,4 +1,4 @@
-Soshigal::Application.configure do
+S3Upload::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -28,5 +28,5 @@ Soshigal::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { host: "soshigal.dev" }
+  config.action_mailer.default_url_options = { host: "s3_upload.dev" }
 end

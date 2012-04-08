@@ -1,71 +1,61 @@
 require 'acceptance_helper'
 
-feature 'Admin creates albums' do
-  let(:admin) { Fabricate(:admin) }
+feature 'User can create albums' do
+  let(:user) { Fabricate(:user) }
   let(:album) { Fabricate.build(:album) }
-  let(:category) { Fabricate.build(:category) }
 
   background do
-    sign_in admin
-    create_root_category(category)
+    sign_in user
   end
 
-  scenario 'one nested album' do
+  scenario 'with valid info' do
     visit homepage
 
-    click_link category.title
+    click_link 'New Album'
     within('#new_album') do
       fill_in 'Title', with: album.title
       fill_in 'Description', with: album.description
     end
     click_button 'Create'
+
+    page.should have_content 'Album was successfully created.'
+    page.should have_content album.title
   end
 end
 
-feature 'Admin destroys album' do
-  let(:admin) { Fabricate(:admin) }
-  let(:album) { Fabricate.build(:album) }
-  let(:category) { Fabricate.build(:category) }
+feature 'User destroys album' do
+  let(:user) { Fabricate(:user) }
+  let(:album) { Fabricate(:album) }
 
   background(:each) do
-    sign_in admin
-    create_root_category(category)
+    sign_in user
   end
 
-  scenario 'one nested album' do
-    create_album(category, album)
-
+  scenario 'with valid info' do
     visit homepage
 
-    click_link category.title
     click_link album.title
 
     click_link 'Destroy'
 
     page.should have_content 'Album was successfully destroyed.'
 
-    click_link category.title
     page.should have_no_content album.title
   end
 end
 
-feature 'Admin edits albums' do
-  let(:admin) { Fabricate(:admin) }
-  let!(:category) { Fabricate.build(:category) }
-  let!(:album) { Fabricate.build(:category) }
-  let!(:edited_album) { Fabricate.build(:category) }
+feature 'User edits albums' do
+  let(:user) { Fabricate(:user) }
+  let!(:album) { Fabricate(:category) }
+  let!(:edited_album) { Fabricate.build(:album) }
 
   background(:each) do
-    sign_in admin
-    create_root_category(category)
+    sign_in user
   end
 
-  scenario 'one nested album' do
-    create_album(category, album)
-
+  scenario 'with valid info' do
     visit homepage
 
-    click_link category.title
     click_link album.title
 
     click_link 'Edit'

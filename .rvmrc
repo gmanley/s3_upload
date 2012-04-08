@@ -1,1 +1,1 @@
-rvm use 1.9.3@soshigal --create
+rvm use 1.9.3@s3_upload --create

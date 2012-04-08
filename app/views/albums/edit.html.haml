@@ -1,4 +1,4 @@
-= form_for([@category, @album]) do |f|
+= form_for(@album) do |f|
   %fieldset
     %legend Editing Album
     .clearfix
@@ -10,10 +10,10 @@
       .input
         = f.text_field :description
     .clearfix
-      = f.label :hidden
+      = f.label :private
       .input
-        = f.check_box :hidden
+        = f.check_box :private
     .actions
       = f.submit 'Save', class: 'btn btn-primary'
 
-= link_to 'Show', [@category, @album]
+= link_to 'Show', @album
