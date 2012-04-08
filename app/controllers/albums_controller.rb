@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   respond_to :html, :json, :js
 
   def index
-    @albums = Album.all
+    @albums = Album.accessible_by(current_ability)
     authorize!(:index, Album)
 
     respond_with(@albums)

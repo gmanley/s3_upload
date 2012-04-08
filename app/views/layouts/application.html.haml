@@ -7,7 +7,7 @@
       = javascript_include_tag 'html5shiv'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body{class: controller_name}
+  %body{class: page_class}
     = render 'shared/top_bar'
     .container-fluid
       #content
