@@ -1,16 +1,7 @@
 S3Upload
 ========
 
-S3Upload is a photo gallery built with Rails.
-
-Features
--------
-
-* Drag and Drop Image Uploading
-* Simultaneous Uploading of Images
-* Ajax Image Updating after Upload
-* Nested Categories & Albums
-* Basic Admin Role Based Permissions
+S3Upload is meant as a imgur replacement that allows you to use your own s3 account!
 
 To Do
 -----
@@ -45,8 +36,8 @@ __Steps:__
 2. `bundle install`
 3. `rake db:seed`
 4. `bundle exec rails server`
-5. Login with the seed admin user (See Below).
+5. Login with the seed user (See Below).
 
 #### Admin User: ####
-    Email: admin@example.com
+    Email: example@example.com
     Password: password 
