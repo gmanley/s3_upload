@@ -7,8 +7,28 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   process :set_content_type
 
-  version :thumb do
+  version :huge do
+    process resize_to_fit: [1024, 1024]
+  end
+
+  version :large do
+    process resize_to_fit: [640, 640]
+  end
+
+  version :medium do
+    process resize_to_fit: [320, 320]
+  end
+
+  version :small do
+    process resize_to_fit: [160, 160]
+  end
+
+  version :large_square do
     process resize_to_fill: [200, 200]
+  end
+
+  version :small_square do
+    process resize_to_fill: [100, 100]
   end
 
   def store_dir
