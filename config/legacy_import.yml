@@ -1,6 +1,0 @@
-ipgallery:
-  user: root
-  password:
-  adapter: mysql
-  host: localhost
-  database: s3_upload_legacy

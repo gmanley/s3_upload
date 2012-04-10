@@ -13,7 +13,7 @@ Spork.prefork do
     config.mock_with :rspec
 
     config.include Mongoid::Matchers
-    config.include Devise::TestHelpers, type: :controller
+    config.include Sorcery::TestHelpers::Rails, type: :controller
     config.extend ControllerMacros, type: :controller
 
     config.before(:suite) do
