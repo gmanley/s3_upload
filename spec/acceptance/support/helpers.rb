@@ -5,10 +5,10 @@ module HelperMethods
     visit homepage
 
     within "form#login" do
-      fill_in "user_email", with: user.email
+      fill_in "user_username", with: user.username
       fill_in "user_password", with: user.password
 
-      click_button "Sign in"
+      click_button "Sign In"
     end
   end
 end

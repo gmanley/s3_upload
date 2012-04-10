@@ -46,7 +46,7 @@ end
 
 feature 'User edits albums' do
   let(:user) { Fabricate(:user) }
-  let!(:album) { Fabricate(:category) }
+  let!(:album) { Fabricate(:album) }
   let!(:edited_album) { Fabricate.build(:album) }
 
   background(:each) do
