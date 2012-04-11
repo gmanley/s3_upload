@@ -5,8 +5,9 @@
   .modal-body
     .modal-image
   .modal-footer
-    %input#image_url{type: 'text', disabled: true}
-    %select.span2#thumbnail_select
+    %div.pull-left
+      %input#image_url{type: 'text', disabled: true}
+      %select.span2#thumbnail_select
     %a.btn.btn-primary.modal-next
       %i.icon-arrow-right.icon-white
     %a.btn.btn-info.modal-prev
