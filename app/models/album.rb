@@ -23,6 +23,6 @@ class Album
   scope :users_albums, ->(user) { where(user_id: user.id) }
 
   def set_thumbnail_url
-    update_attribute(:thumbnail_url, images.sample.image_url(:thumb)) unless images.empty?
+    update_attribute(:thumbnail_url, images.sample.image_url(:large_square)) unless images.empty?
   end
 end

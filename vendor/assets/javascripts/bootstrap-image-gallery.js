@@ -1,5 +1,5 @@
 /*
- * Bootstrap Image Gallery 2.2.2
+ * Bootstrap Image Gallery 2.4
  * https://github.com/blueimp/Bootstrap-Image-Gallery
  *
  * Copyright 2011, Sebastian Tschan
@@ -52,7 +52,9 @@
         // Set to true to display images as canvas elements:
         canvas: false,
         // Shows the next image after the given time in ms (0 = disabled):
-        slideshow: 0
+        slideshow: 0,
+        // Defines the image division for previous/next clicks:
+        imageClickDivision: 0.5
     });
     var originalShow = $.fn.modal.Constructor.prototype.show,
         originalHide = $.fn.modal.Constructor.prototype.hide;
@@ -142,6 +144,7 @@
                     window.clearTimeout($this._loadingTimeout);
                     modal.removeClass('modal-loading');
                     $this.showImage(img);
+                     $(document.body).trigger('image_loaded.modal-gallery') //!! CUSTOM ADDITION TO LISTEN FOR MODAL SWITCHES
                     $this.startSlideShow();
                 },
                 $this.loadImageOptions
@@ -159,6 +162,7 @@
                 width: img.width,
                 height: img.height
             });
+            modal.find('.modal-title').css({ width: Math.max(img.width, 380) });
             if ($(window).width() > 480) {
                 if (transition) {
                     clone = modal.clone().hide().appendTo(document.body);
@@ -230,10 +234,16 @@
             var $this = this,
                 modal = this.$element;
             modal.find('.modal-image').on('click.modal-gallery', function (e) {
-                if (e.altKey) {
-                    $this.prev(e);
+                var modalImage = $(this);
+                if ($this.urls.length === 1) {
+                    $this.hide();
                 } else {
-                    $this.next(e);
+                    if ((e.pageX - modalImage.offset().left) / modalImage.width() <
+                            $this.options.imageClickDivision) {
+                        $this.prev(e);
+                    } else {
+                        $this.next(e);
+                    }
                 }
             });
             modal.find('.modal-prev').on('click.modal-gallery', function (e) {
@@ -298,6 +308,12 @@
                 this.initGalleryEvents();
                 this.initLinks();
                 if (this.urls.length) {
+                    modal.find('.modal-slideshow, .modal-prev, .modal-next')
+                        .toggle(this.urls.length !== 1);
+                    modal.toggleClass(
+                        'modal-single',
+                        this.urls.length === 1
+                    );
                     this.loadImage();
                 }
             }

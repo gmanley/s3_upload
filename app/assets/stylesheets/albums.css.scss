@@ -20,6 +20,11 @@ body.albums {
   }
 
   &.show {
+    #image_url {
+      background-color:white;
+      cursor:auto;
+    }
+
     .thumbnails {
       clear: both;
     }
