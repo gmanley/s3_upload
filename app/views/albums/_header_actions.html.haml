@@ -1,0 +1,4 @@
+%span.header-actions
+  = link_to_if(can?(:edit, @album), 'Edit', edit_album_path(@album))
+  |
+  = link_to_if(can?(:destroy, @album), 'Destroy', @album, confirm: 'Are you sure?', method: :delete)
