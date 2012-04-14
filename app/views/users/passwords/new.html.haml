@@ -2,7 +2,9 @@
   %fieldset
     %legend Forgot your password?
     = f.label :email
-    = f.email_field :email, placeholder: 'Email'
+    = f.email_field :email
+
     .form-actions
       = f.submit 'Reset password', class: 'btn btn-primary'
+
   = render partial: 'users/shared/links'

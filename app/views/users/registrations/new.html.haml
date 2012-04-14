@@ -2,13 +2,18 @@
   %fieldset
     %legend Sign up
     = f.label :username
-    = f.text_field :username, placeholder: 'Username'
+    = f.text_field :username
+
     = f.label :email
-    = f.email_field :email, placeholder: 'Email'
+    = f.email_field :email
+
     = f.label :password
-    = f.password_field :password, placeholder: 'Password'
+    = f.password_field :password
+
     = f.label :password_confirmation
-    = f.password_field :password_confirmation, placeholder: 'Password Confirmation'
+    = f.password_field :password_confirmation
+
     .form-actions
       = f.submit 'Sign Up', class: 'btn btn-primary'
+
   = render partial: 'users/shared/links'

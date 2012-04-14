@@ -2,17 +2,23 @@
   %fieldset
     %legend Edit user
     = f.label :username
-    = f.text_field :username, placeholder: 'Username'
+    = f.text_field :username
+
     = f.label :email
-    = f.email_field :email, placeholder: 'Email'
+    = f.email_field :email
+
     = f.label :password
-    = f.password_field :password, placeholder: 'Password'
+    = f.password_field :password
     %span.help-inline (leave blank if you don't want to change it)
+
     = f.label :password_confirmation
-    = f.password_field :password_confirmation, placeholder: 'Password Confirmation'
+    = f.password_field :password_confirmation
+
     = f.label :current_password
-    = f.password_field :current_password, placeholder: 'Current Password'
+    = f.password_field :current_password
+
     .form-actions
       = f.submit 'Update', class: 'btn btn-primary'
       = link_to 'Cancel', :back, class: 'btn'
+
   = render partial: 'users/shared/links'

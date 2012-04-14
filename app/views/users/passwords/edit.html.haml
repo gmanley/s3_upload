@@ -2,11 +2,15 @@
   %fieldset
     %legend Change password
     = f.hidden_field :reset_password_token
+
     = f.label :password, 'New Password'
     = f.password_field :password
+
     = f.label :password_confirmation, 'Confirm new password'
     = f.password_field :password_confirmation
+
     .form-actions
       = f.submit 'Change password', class: 'btn btn-primary'
       = link_to 'Cancel', :back, class: 'btn'
+
   = render partial: 'users/shared/links'
