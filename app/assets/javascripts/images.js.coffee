@@ -18,6 +18,11 @@ thumbnailsForImage = (image_uri) ->
     thumbnail_arry
   thumbnails
 
+initClippy = (opts) ->
+  $('#copy-url').clippy
+    clippy_path: "/assets/clippy.swf"
+    text: opts.text
+
 $ ->
   $('#start_upload').button()
   uploader = new plupload.Uploader(
@@ -78,8 +83,9 @@ $ ->
     _(thumbnailsForImage(image_uri)).each (url, label) ->
       $select.append $("<option />").val(url).text(label)
     $select.on 'change', (e) ->
-      $('#image_url').val($(this).val())
-
-  $(document.body).on 'click.modal-gallery.data-api', '[data-toggle="modal-gallery"]', (e) ->
-
+      image_uri = $(this).val()
+      $('#image_url').val(image_uri)
+      $('#copy-url').data('text', image_uri)
+      initClippy(text: image_uri)
+    initClippy(text: image_uri)
 

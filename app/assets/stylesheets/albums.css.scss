@@ -25,6 +25,18 @@ body.albums {
       cursor:auto;
     }
 
+    #copy-url {
+      background-image:url('/assets/clippy.png');
+      display:inline-block;
+      height:16px;
+      width:16px;
+      background-color:transparent;
+      background-position:0 0;
+      background-repeat:no-repeat;
+      vertical-align:text-bottom;
+      margin:4px 0 0 5px;
+    }
+
     .thumbnails {
       clear: both;
     }
