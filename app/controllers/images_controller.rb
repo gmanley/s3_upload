@@ -1,13 +1,12 @@
 class ImagesController < ApplicationController
-  respond_to :html, :json, :js
+  respond_to :js, :json, :html
 
   def create
     @album = Album.find_by_slug(params[:album_id])
     @image = @album.images.new(params[:image])
     authorize!(:create, @image)
-
     @image.save
-    respond_with(@image)
+    render 'create', formats: :json
   end
 
   def destroy

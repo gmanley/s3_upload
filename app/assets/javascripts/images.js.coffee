@@ -22,9 +22,9 @@ initClippy = (opts) ->
   $('#copy-url').clippy
     clippy_path: "/assets/clippy.swf"
     text: opts.text
-
 $ ->
   $('#start_upload').button()
+
   uploader = new plupload.Uploader(
     runtimes: 'html5,flash'
     browse_button: 'select_files'
@@ -44,14 +44,7 @@ $ ->
 
   uploader.bind "FilesAdded", (up, files) ->
     $.each files, (i, file) ->
-      $("#file_list").append("""
-        <li id="#{file.id}">
-          <div class='file_info'>#{file.name} (#{plupload.formatSize(file.size)}) <b></b></div>
-          <div class="progress striped">
-            <div class="bar" style="width: 0%;"></div>
-          </div>
-        </li>
-      """)
+      $("#file_list").append(JST['templates/file'](file: file))
 
   uploader.bind 'UploadProgress', (up, file) ->
     $("##{file.id} b").html("#{file.percent}%")
@@ -62,8 +55,9 @@ $ ->
     $(this).button('loading')
     e.preventDefault()
 
-  uploader.bind 'FileUploaded', (up, file, response) ->
-    eval(response.response)
+  uploader.bind 'FileUploaded', (up, file, request) ->
+    image = JSON.parse(request.response)
+    $(".thumbnails").append(JST['templates/image'](image: image))
     $("##{file.id} .progress")
       .toggleClass('active')
       .prev('.file_info b').text('Done')

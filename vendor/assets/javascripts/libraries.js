@@ -9,3 +9,4 @@
 //= require plupload.flash
 //= require plupload.html5
 //= require underscore
+//= require hamlcoffee

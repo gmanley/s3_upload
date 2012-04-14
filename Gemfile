@@ -10,6 +10,9 @@ group :assets do
   gem 'sass-rails',   '~> 3.2'
   gem 'coffee-rails', '~> 3.2'
   gem 'uglifier',     '>= 1'
+  gem 'haml_coffee_assets'
+  gem 'execjs'
+  gem 'rabl'
 end
 
 gem 'jquery-rails'
