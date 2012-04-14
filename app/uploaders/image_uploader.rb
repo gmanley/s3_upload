@@ -11,23 +11,23 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [1024, 1024]
   end
 
-  version :large do
+  version :large, from_version: :huge do
     process resize_to_fit: [640, 640]
   end
 
-  version :medium do
+  version :medium, from_version: :large do
     process resize_to_fit: [320, 320]
   end
 
-  version :small do
+  version :small, from_version: :medium do
     process resize_to_fit: [160, 160]
   end
 
-  version :large_square do
+  version :large_square, from_version: :medium do
     process resize_to_fill: [200, 200]
   end
 
-  version :small_square do
+  version :small_square, from_version: :small do
     process resize_to_fill: [100, 100]
   end
 
