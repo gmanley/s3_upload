@@ -20,6 +20,43 @@ body.albums {
   }
 
   &.show {
+    .selection {
+      position: absolute;
+      border: 1px solid #89B;
+      background: #BCE;
+      background-color: #BEC;
+      border-color: #8B9;
+    }
+
+    .size2 {
+      height: 118px;
+      line-height: 118px;
+    }
+
+    .size3 {
+      height: 178px;
+      line-height: 178px;
+    }
+
+    .drop {
+      float: left;
+      border: 1px dashed #888;
+      background: #EEE;
+      text-align: center;
+      padding: 20px;
+      margin: 0 10px 10px 0;
+    }
+
+    .dropped {
+      background-color: #EBC;
+      border-color: #B89;
+    }
+
+    .active {
+      background-color: #CEB;
+      border-color: #9B8;
+    }
+
     #image_url {
       background-color:white;
       cursor:auto;

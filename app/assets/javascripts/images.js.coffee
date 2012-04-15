@@ -22,8 +22,34 @@ initClippy = (opts) ->
   $('#copy-url').clippy
     clippy_path: "/assets/clippy.swf"
     text: opts.text
+
+startSelection = ->
+  $(document).drag("start", (ev, dd) ->
+    $('<div class="selection" />').css("opacity", .65).appendTo document.body
+  ).drag((ev, dd) ->
+    $(dd.proxy).css
+      top: Math.min(ev.pageY, dd.startY)
+      left: Math.min(ev.pageX, dd.startX)
+      height: Math.abs(ev.pageY - dd.startY)
+      width: Math.abs(ev.pageX - dd.startX)
+  ).drag "end", (ev, dd) ->
+    $(dd.proxy).remove()
+
+  $(".thumbnail").drop("start", ->
+    $(this).addClass "active"
+  ).drop((ev, dd) ->
+    $(this).toggleClass "dropped"
+  ).drop "end", ->
+    $(this).removeClass "active"
+
+  $.drop multi: true
+
 $ ->
-  $('#start_upload').button()
+  $('#start_upload', '#start_selection').button()
+  $('#start_selection').on 'click', (e) ->
+    startSelection()
+    console.log($(this))
+    $(this).button('toggled')
 
   uploader = new plupload.Uploader(
     runtimes: 'html5,flash'

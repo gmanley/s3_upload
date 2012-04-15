@@ -4,6 +4,8 @@
 //= require load-image
 //= require bootstrap-image-gallery
 //= require jquery.jeditable
+//= require jquery.event.drag
+//= require jquery.event.drop
 //= require jquery.clippy
 //= require plupload.base
 //= require plupload.flash
