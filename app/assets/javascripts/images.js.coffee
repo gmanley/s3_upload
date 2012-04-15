@@ -29,13 +29,12 @@ $ ->
     runtimes: 'html5,flash'
     browse_button: 'select_files'
     max_file_size: '10mb'
-    chunk_size : '1mb',
     url: "#{window.location.pathname}/images.js"
     file_data_name: 'image[image]'
     flash_swf_url: '/assets/plupload.flash.swf'
     drop_element: 'content'
     filters:
-      {title: "Image files", extensions: "jpg,gif,png"}
+      {title: 'Image files', extensions: 'jpg,jpeg,gif,png'}
     multipart: true
     multipart_params:
       authenticity_token: authenticity_token
