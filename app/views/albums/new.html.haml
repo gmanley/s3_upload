@@ -2,3 +2,5 @@
   %fieldset
     %legend New Album
     = render partial: 'form', locals: {f: f}
+    .form-actions
+      = f.submit 'Create', class: 'btn btn-primary'

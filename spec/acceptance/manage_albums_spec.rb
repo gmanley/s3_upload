@@ -1,7 +1,7 @@
 require 'acceptance_helper'
 
 feature 'User can create albums' do
-  let(:user) { Fabricate(:user) }
+  let(:user) { Fabricate(:confirmed_user) }
   let(:album) { Fabricate.build(:album) }
 
   background do
@@ -24,8 +24,8 @@ feature 'User can create albums' do
 end
 
 feature 'User destroys album' do
-  let(:user) { Fabricate(:user) }
-  let(:album) { Fabricate(:album) }
+  let(:user) { Fabricate(:confirmed_user) }
+  let!(:album) { Fabricate(:album, user: user) }
 
   background(:each) do
     sign_in user
@@ -36,7 +36,7 @@ feature 'User destroys album' do
 
     click_link album.title
 
-    click_link 'Destroy'
+    click_link 'Delete'
 
     page.should have_content 'Album was successfully destroyed.'
 
@@ -45,9 +45,9 @@ feature 'User destroys album' do
 end
 
 feature 'User edits albums' do
-  let(:user) { Fabricate(:user) }
-  let!(:album) { Fabricate(:album) }
-  let!(:edited_album) { Fabricate.build(:album) }
+  let(:user) { Fabricate(:confirmed_user) }
+  let!(:album) { Fabricate(:album, user: user) }
+  let(:edited_album) { Fabricate.build(:album) }
 
   background(:each) do
     sign_in user
