@@ -5,8 +5,9 @@ class ImagesController < ApplicationController
     @album = Album.find_by_slug(params[:album_id])
     @image = @album.images.new(params[:image])
     authorize!(:create, @image)
+
     @image.save
-    respond_with(@image, formats: :json)
+    respond_with(@image, location: nil) # set location to nil as the image resource has no show
   end
 
   def destroy

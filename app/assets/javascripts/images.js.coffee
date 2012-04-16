@@ -48,14 +48,13 @@ $ ->
   $('#start_upload', '#start_selection').button()
   $('#start_selection').on 'click', (e) ->
     startSelection()
-    console.log($(this))
     $(this).button('toggled')
 
   uploader = new plupload.Uploader(
     runtimes: 'html5,flash'
     browse_button: 'select_files'
     max_file_size: '10mb'
-    url: "#{window.location.pathname}/images.js"
+    url: "#{window.location.pathname}/images.json"
     file_data_name: 'image[image]'
     flash_swf_url: '/assets/plupload.flash.swf'
     drop_element: 'content'
@@ -81,8 +80,8 @@ $ ->
     e.preventDefault()
 
   uploader.bind 'FileUploaded', (up, file, request) ->
-    image = JSON.parse(request.response)
-    $(".thumbnails").append(JST['templates/image'](image: image))
+    response = JSON.parse(request.response)
+    $(".thumbnails").append(JST['templates/image'](image: response.image))
     $("##{file.id} .progress")
       .toggleClass('active')
       .prev('.file_info b').text('Done')
