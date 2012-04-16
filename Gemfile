@@ -5,6 +5,7 @@ gem 'rails', '~> 3.2'
 gem 'haml-rails'
 gem 'coffee-filter'
 gem 'coffeebeans'
+gem 'rabl'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2'
@@ -12,7 +13,6 @@ group :assets do
   gem 'uglifier',     '>= 1'
   gem 'haml_coffee_assets'
   gem 'execjs'
-  gem 'rabl'
 end
 
 gem 'jquery-rails'
