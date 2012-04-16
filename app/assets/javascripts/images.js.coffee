@@ -36,11 +36,11 @@ startSelection = ->
     $(dd.proxy).remove()
 
   $(".thumbnail").drop("start", ->
-    $(this).addClass "active"
+    $(this).addClass "selecting"
   ).drop((ev, dd) ->
-    $(this).toggleClass "dropped"
+    $(this).toggleClass "selected"
   ).drop "end", ->
-    $(this).removeClass "active"
+    $(this).removeClass "selecting"
 
   $.drop multi: true
 

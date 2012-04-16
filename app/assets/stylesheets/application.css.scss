@@ -5,51 +5,12 @@
  *= require_tree .
 */
 
-/* Override some defaults */
-
-html, body {
-  background-color: #eee;
-  height: 100%;
+body {
+  color:#444;
 }
 
-.container-fluid {
-  height:100%;
-}
-
-.container-fluid > footer p {
-  text-align: center; /* center align it with the container */
-}
-
-/* The white background content wrapper */
-#content {
-  min-height:100%;
-  background-color: #fff;
-  padding: 20px;
-  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px 6px;
-     -moz-border-radius: 0 0 6px 6px;
-          border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-          box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
-
-/* Page header tweaks */
-.page-header {
-  background-color: #f5f5f5;
-  padding: 20px 20px 10px;
-  margin: -20px -20px 20px;
-}
-
-.navbar {
-  margin-bottom: 0;
-}
-
-.header-actions {
-  font-size: 14px;
-  padding-left: 10px;
-}
-
-.plupload.html5, .plupload.flash {
-  display:none;
+footer {
+  margin-top:40px;
+  border-top:1px solid #E5E5E5;
+  padding:35px 0 36px;
 }
