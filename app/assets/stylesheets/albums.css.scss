@@ -47,6 +47,10 @@ body.albums {
       cursor:auto;
     }
 
+    .modal-gallery {
+      min-width:560px;
+    }
+
     #copy-url {
       background-image:url('/assets/clippy.png');
       display:inline-block;

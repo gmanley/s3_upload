@@ -23,16 +23,4 @@ module ApplicationHelper
       haml_concat(message)
     end
   end
-
-
-  def breadcrumb(text, link = nil)
-    if link
-      haml_tag :li do
-        haml_tag :a, text, href: link
-        haml_tag 'span.divider', '/'
-      end
-    else
-      haml_tag 'li.active', text
-    end
-  end
 end

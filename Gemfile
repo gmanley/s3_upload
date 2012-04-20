@@ -55,13 +55,3 @@ group :development, :test do
   gem 'spork'
   gem 'launchy'
 end
-
-# Unccomment this and run bundle if you need to run the importer.
-# After your done using the importer make sure to comment this block out
-# again and run `bundle` or you may run into issues.
-# group :importer do
-#   gem 'dm-core'
-#   gem 'dm-mysql-adapter'
-#   gem 'progressbar'
-#   gem 'parallel'
-# end
